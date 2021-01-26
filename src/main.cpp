@@ -3,13 +3,10 @@
 #include <pcl/PolygonMesh.h>
 #include <pcl/io/vtk_lib_io.h>
 int main(int argc,char* argv[]) {
-    pcl::PCDReader reader;
-    pcl::PCDWriter writer;
-    
 	std::string filename = argv[1];
     pcl::PolygonMesh::Ptr mesh( new pcl::PolygonMesh() );
     pcl::PointCloud<pcl::PointXYZ>::Ptr obj_pnt( new pcl::PointCloud<pcl::PointXYZ>() );
-    
+   
     if ( pcl::io::loadPolygonFileOBJ( filename, *mesh ) != -1 ){
         pcl::fromPCLPointCloud2( mesh->cloud, *obj_pnt );
     }
